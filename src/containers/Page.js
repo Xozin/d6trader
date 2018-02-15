@@ -10,7 +10,7 @@ import {card, set} from 'mtgsdk'
 // console.log(card, set);
 
 card.all({ name: 'opt'})
-.on('data', card => {console.log(card, 'хуй')});
+.on('data', card => {console.log(card)});
 
 class Page extends Component {
   componentDidMount() {
