@@ -7,8 +7,21 @@ export const userService = {
     getAll,
     getById,
     update,
+    getUserCards,
     delete: _delete
 };
+
+function getUserCards(user) {
+    const requestOptions = {
+        method: 'GET',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({user})
+    }
+    return fetch('/user/cards', requestOptions)
+        .then(response => {
+            return response.json();
+        })
+}
 
 function login(username, password) {
     const requestOptions = {

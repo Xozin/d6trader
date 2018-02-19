@@ -8,6 +8,7 @@ export const userActions = {
     logout,
     register,
     getAll,
+    getCards,
     delete: _delete
 };
 
@@ -36,6 +37,16 @@ function login(username, password) {
 function logout() {
     userService.logout();
     return { type: userConstants.LOGOUT };
+}
+
+function getCards(user) {
+    return dispatch => {
+        dispatch(request(user));
+
+        userService.getUserCards(user);
+    };
+
+    function request(user) { return {type: userConstants.GET_USER_CARDS_REQUEST, user} }
 }
 
 function register(user) {

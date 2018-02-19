@@ -37,6 +37,13 @@ export function configureFakeBackend() {
                     return;
                 }
 
+                //get user cards
+                if (url.endsWith('/user/cards') && opts.method === 'GET') {
+                    let user = JSON.parse(opts.body);
+                    console.log(user, 'chlenKonya');
+                    return user.cardList;
+                }
+
                 // get users
                 if (url.endsWith('/users') && opts.method === 'GET') {
                     // check for fake auth token in header and return users if valid, this security is implemented server side in a real application

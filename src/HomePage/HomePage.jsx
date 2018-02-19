@@ -4,14 +4,16 @@ import { connect } from 'react-redux';
 
 import { userActions } from '../_actions';
 
+
+
 class HomePage extends React.Component {
     componentDidMount() {
         this.props.dispatch(userActions.getAll());
     }
 
-    handleDeleteUser(id) {
-        return (e) => this.props.dispatch(userActions.delete(id));
-    }
+	getUserCardList(user) {
+		return this.props.dispatch(userActions.getCards(user));
+	}
 
     render() {
         const { user } = this.props;
@@ -20,6 +22,8 @@ class HomePage extends React.Component {
             <div className="col-md-6 col-md-offset-3">
                 <h1>Hi {user.username}!</h1>
                 {typeof user.cardList === 'undefined'?<p>ХУЙ</p>:user.cardList}
+                <button onClick={()=>{this.getUserCardList(user)}}>asd</button>
+
                 <p>
                     <Link to="/login">Logout</Link>
                 </p>
