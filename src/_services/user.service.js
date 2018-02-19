@@ -22,7 +22,6 @@ function login(username, password) {
             if (!response.ok) { 
                 return Promise.reject(response.statusText);
             }
-
             return response.json();
         })
         .then(user => {
@@ -31,8 +30,9 @@ function login(username, password) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
             }
-
-            return user;
+			console.log(user);
+	
+			return user;
         });
 }
 
@@ -65,7 +65,6 @@ function register(user) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
-
     return fetch('/users/register', requestOptions).then(handleResponse);
 }
 

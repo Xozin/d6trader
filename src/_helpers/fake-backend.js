@@ -24,8 +24,8 @@ export function configureFakeBackend() {
                         let responseJson = {
                             id: user.id,
                             username: user.username,
-                            firstName: user.firstName,
-                            lastName: user.lastName,
+                            vkLink: user.vkLink,
+                            cardList: user.cardList,
                             token: 'fake-jwt-token'
                         };
                         resolve({ ok: true, json: () => responseJson });
@@ -49,7 +49,7 @@ export function configureFakeBackend() {
 
                     return;
                 }
-
+	
                 // get user by id
                 if (url.match(/\/users\/\d+$/) && opts.method === 'GET') {
                     // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
