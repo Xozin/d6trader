@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { CardAdder } from '../_components/CardAdder/index'
 
 import { userActions } from '../_actions';
 
@@ -27,6 +28,7 @@ class HomePage extends React.Component {
                 <h1>Hi {user.username}!</h1>
                 {typeof user.cardList === 'undefined'?<p>ХУЙ</p>:user.cardList.length}
                 <button onClick={()=>{this.getUserCardList(user)}}>get</button>
+                <CardAdder/>
                 <button onClick={()=>{this.updateUserCardList(user)}}>update</button>
                 <p>
                     <Link to="/login">Logout</Link>
