@@ -8,6 +8,7 @@ export const userService = {
     getById,
     update,
     getUserCards,
+	updateUserCards,
     delete: _delete
 };
 
@@ -18,6 +19,18 @@ function getUserCards(user) {
 		body: JSON.stringify({user})
     }
     return fetch('/user/cards', requestOptions)
+        .then(response => {
+            return response.json();
+        })
+}
+
+function updateUserCards(user) {
+    const requestOptions = {
+        method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({user})
+	}
+	return fetch('/user/cards', requestOptions)
         .then(response => {
             return response.json();
         })

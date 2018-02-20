@@ -9,6 +9,7 @@ export const userActions = {
     register,
     getAll,
     getCards,
+    updateCards,
     delete: _delete
 };
 
@@ -47,6 +48,16 @@ function getCards(user) {
     };
 
     function request(user) { return {type: userConstants.GET_USER_CARDS_REQUEST, user} }
+}
+
+function updateCards(user) {
+    return dispatch => {
+        dispatch(request(user));
+        
+        userService.updateUserCards(user);
+    }
+    
+    function request(user) { return {type: userConstants.UPDATE_USER_CARDS_REQUEST, user} }
 }
 
 function register(user) {
